@@ -1,4 +1,9 @@
+
+
+
 <template>
+    <!-- KOMPONEN INI YANG MENGGUNAKAN function createStaff -->
+
     <form @submit.prevent="handleSubmit" class="space-y-2">
         <input v-model="name" placeholder="name">
         <input v-model="email" placeholder="email">
@@ -18,6 +23,9 @@ const email = ref('');
 const position = ref('');
 
 const handleSubmit = async () => {
+    // PAREMETER createStaff() cuman satu DISINI KITA MASUKAN SEBUAH OBJEK
+    // NAMANYA BESAR KECIL HURUFNYA HARUS SAMA SEPERTI YANG ADA DIDATABASE YA
+    // Position: beda sama position:
     await createStaff({
         name: name.value,
         email: email.value,
