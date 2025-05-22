@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"   // atau "postgresql" jika menggunakan PostgreSQL
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  admin
+  staff
+}
+
+model User {
+  id          Int        @id @default(autoincrement())
+  username    String     @unique
+  email       String     @unique
+  password    String
+  role        Role       @default(staff)
+  position    String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  lastLoginAt DateTime?
+
+  materials   Material[]  //Relation ke Material
+}
+
+model Material {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  video    String?
+  Image    String?
+  link        String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdBy   User     @relation(fields: [createdById], references: [id])
+  createdById Int
+}
+
