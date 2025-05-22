@@ -7,7 +7,7 @@ const app = express();
 const { register, login } = require('./controllers/authController');
 
 
-const staffRoutes = require('./routes/staffRoutes');
+// const staffRoutes = require('./routes/staffRoutes'); //ini nnti untuk melanjutkan ke role staff dashboardnya apa aja (onprogress)
 const adminRoutes = require('./routes/adminRoutes');
 
 
@@ -20,7 +20,7 @@ app.post('/login', login);
 
 
 
-app.use('/staff', staffRoutes);
+// app.use('/staff', staffRoutes); //ini nnti untuk melanjutkan ke role staff dashboardnya apa aja (onprogress)
 app.use('/admin', adminRoutes);
 
 app.post('/', (req, res) => {
